@@ -39,7 +39,7 @@ This steps configure a group resource which sends updates to DDNS on starting th
     else
         IP_ADDRESS=$IP_ADDRESS2
     fi
-    curl 'http://$NOIP_USERNAME:$NOIP_PASSWORD@dynupdate.no- ip.com/nic/update?hostname=$NOIP_HOSTNAME&myip=$IP_ADDR'
+    curl "http://$NOIP_USERNAME:$NOIP_PASSWORD@dynupdate.no- ip.com/nic/update?hostname=$NOIP_HOSTNAME&myip=$IP_ADDR"
     ```
 
    Replace
@@ -64,10 +64,10 @@ This steps configure a monitor resource which sends updates to DDNS every 24 hou
     # When the failover-group is active on alpha (bravo), this script updates
     # Dynamic DNS to have $NOIP_HOSTNAME resolves to $IP_ADDRESS1 ($IP_ADDRESS2).
 
-    HOSTNAME1='alpha';
+    HOSTNAME1='alpha'
     IP_ADDRESS1='10.0.0.1'
 
-    HOSTNAME2='bravo';
+    HOSTNAME2='bravo'
     IP_ADDRESS2='10.1.0.1'
 
     NOIP_USERNAME='USERNAME'
@@ -76,12 +76,12 @@ This steps configure a monitor resource which sends updates to DDNS every 24 hou
     #-----------
 
     tmp=`hostname`
-    if [ tmp = $HOSTNAME1 ]; then
+    if [ $tmp = $HOSTNAME1 ]; then
         IP_ADDR=$IP_ADDRESS1
     else
         IP_ADDR=$IP_ADDRESS2
     fi
-    curl 'http://$NOIP_USERNAME:$NOIP_PASSWORD@dynupdate.no-ip.com/nic/update?hostname=$NOIP_HOSTNAME&myip=$IP_ADDR'
+    curl "http://$NOIP_USERNAME:$NOIP_PASSWORD@dynupdate.no-ip.com/nic/update?hostname=$NOIP_HOSTNAME&myip=$IP_ADDR"
     ```
 
     Replace
