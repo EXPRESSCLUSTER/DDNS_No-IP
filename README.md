@@ -59,6 +59,7 @@ This steps configure a group resource which sends updates to DDNS on starting th
     #!/bin/sh
 
     kill -HUP `cat /var/run/exec-ddns.pid`
+    exit 0
     ```
 
    [Tuning] > Select [Asynchronous] for [Start Script] > [OK]
