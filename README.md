@@ -62,7 +62,7 @@ This steps configure a group resource which sends updates to DDNS on starting th
     exit 0
     ```
 
-   [Tuning] > Select [Asynchronous] for [Start Script] > [OK]
+   [Tuning] > Select [Asynchronous] for [Start Script] > [Maintenance] tab > input */opt/nec/clusterpro/log/exec-ddns.log* as [Log Output Path] > check [Rotate Log] > [OK]
 
 7. Click [Apply the Configuration File]
 
