@@ -37,9 +37,9 @@ This steps configure a group resource which sends updates to DDNS on starting th
     #-----------
 
     if [ "$CLP_SERVER" = "HOME" ]; then
-        IP_ADDRESS=$IP_ADDRESS1
+        IP_ADDR=$IP_ADDRESS1
     else
-        IP_ADDRESS=$IP_ADDRESS2
+        IP_ADDR=$IP_ADDRESS2
     fi
     echo $$ > /var/run/exec-ddns.pid
     while [ 1 ]; do
@@ -58,7 +58,16 @@ This steps configure a group resource which sends updates to DDNS on starting th
     ```bash
     #!/bin/sh
 
-    kill -HUP `cat /var/run/exec-ddns.pid`
+    killpstree(){
+    	local children=`ps --ppid $1 --no-heading | awk '{ print $1 }'`
+    	for child in $children
+    	do
+    		killpstree $child
+    	done
+    	kill $1
+    }
+
+    killpstree `cat /var/run/exec-ddns.pid`
     exit 0
     ```
 
