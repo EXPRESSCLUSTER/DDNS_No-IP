@@ -41,7 +41,7 @@ This steps configure a group resource which sends updates to DDNS on starting th
     else
         IP_ADDRESS=$IP_ADDRESS2
     fi
-    echo $$ > /var/run/exec-ddns
+    echo $$ > /var/run/exec-ddns.pid
     while [ 1 ]; do
     	curl "http://$NOIP_USERNAME:$NOIP_PASSWORD@dynupdate.no-ip.com/nic/update?hostname=$NOIP_HOSTNAME&myip=$IP_ADDR"
     	sleep $((60*60*24))
